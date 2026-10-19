@@ -2,8 +2,8 @@ import Dexie from "dexie";
 
 export class IndexedDbStorage {
     constructor() {
-        this.db = new Dexie("calorie-tracker");
-        this.db.version(1).stores({ entries: "id, timestamp" });
+        this.db = new Dexie("calorie-tracker-v2");
+        this.db.version(1).stores({ entries: "++id, timestamp" });
     }
     add(entry)            { return this.db.entries.add(entry); }
     remove(id)            { return this.db.entries.delete(id); }

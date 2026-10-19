@@ -31,12 +31,29 @@ async function render() {
     }));
 }
 
+const DEFAULT_KCAL = 550;
+const DEFAULT_PROTEIN = 20;
+
+$("kcal").addEventListener("input", () => {
+    $("kcal-value").textContent = $("kcal").value;
+});
+
+$("protein").addEventListener("input", () => {
+    $("protein-value").textContent = $("protein").value;
+});
+
+
 $("add-btn").onclick = async () => {
-    const kcal = $("kcal").value, protein = $("protein").value;
-    if (!kcal && !protein) return;
+    const kcal = Number($("kcal").value);
+    const protein = Number($("protein").value);
+    if (kcal === 0 || protein === 0) return;
+
     await storage.add(createEntry({ kcal, protein }));
-    $("kcal").value = $("protein").value = "";
+
+    $("kcal").value = DEFAULT_KCAL;
+    $("protein").value = DEFAULT_PROTEIN;
+    $("kcal-value").textContent = DEFAULT_KCAL;
+    $("protein-value").textContent = DEFAULT_PROTEIN;
     render();
 };
-
 render();

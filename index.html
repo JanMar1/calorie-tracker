@@ -1,13 +1,39 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>calorietrackerweb</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
-  </body>
+<head>
+  <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calorie Tracker</title>
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+<body>
+<main id="app">
+  <section class="totals">
+    <div><span id="total-kcal">0</span><small>kcal today</small></div>
+    <div><span id="total-protein">0</span><small>g protein today</small></div>
+  </section>
+
+  <ul id="entries"></ul>
+
+  <div class="dock">
+    <section class="add calories nad protein">
+      <div class="picker">
+        <label for="kcal">Calories</label>
+        <output id="kcal-value">550</output>
+        <input id="kcal" type="range" min="0" max="2000" step="50" value="550" />
+      </div>
+      <div class="picker">
+        <label for="protein">Protein (g)</label>
+        <output id="protein-value">20</output>
+        <input id="protein" type="range" min="0" max="200" step="5" value="20" />
+      </div>
+      <button id="add-btn" type="button">Add</button>
+    </section>
+
+
+  </div>
+</main>
+<script type="module" src="/src/main.js"></script>
+</body>
 </html>
