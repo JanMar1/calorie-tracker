@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calorie Tracker</title>
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+<body>
+<main id="app">
+  <section class="totals">
+    <div><span id="total-kcal">0</span><small>kcal today</small></div>
+    <div><span id="total-protein">0</span><small>g protein today</small></div>
+  </section>
+
+  <section class="add">
+    <input id="kcal" type="number" inputmode="numeric" min="0" placeholder="kcal" />
+    <input id="protein" type="number" inputmode="numeric" min="0" placeholder="protein (g)" />
+    <button id="add-btn" type="button">Add</button>
+  </section>
+
+  <ul id="entries"></ul>
+</main>
+<script type="module" src="/src/main.js"></script>
+</body>
+</html>
