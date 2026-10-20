@@ -33,7 +33,7 @@ async function render() {
 }
 
 const DEFAULT_KCAL = 550;
-const DEFAULT_PROTEIN = 20;
+const DEFAULT_PROTEIN = 0;
 
 $("kcal").addEventListener("input", () => {
     $("kcal-value").textContent = $("kcal").value;
@@ -47,7 +47,7 @@ $("protein").addEventListener("input", () => {
 $("add-btn").onclick = async () => {
     const kcal = Number($("kcal").value);
     const protein = Number($("protein").value);
-    if (kcal === 0 || protein === 0) return;
+    if (kcal === null || protein === null) return;
 
     await storage.add(createEntry({ kcal, protein }));
 
