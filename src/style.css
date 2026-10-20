@@ -102,6 +102,19 @@ body {
   gap: .6rem;
 }
 
+.add button {
+  grid-column: 1 / -1;   /* full width, below both sliders */
+  padding: .7rem 1.25rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--accent-text);
+  background: var(--accent);
+  border: 0;
+  border-radius: .6rem;
+  cursor: pointer;
+  transition: filter .15s, transform .05s;
+}
+
 .add {
   display: grid;
   grid-template-columns: 1fr;   /* was: 1fr 1fr */
@@ -155,3 +168,40 @@ body {
 }
 .add button:hover { filter: brightness(1.1); }
 .add button:active { transform: scale(.98); }
+
+/* 1. Make .totals relative so the export button can be positioned inside it */
+.totals {
+  position: relative;
+  display: flex;
+  padding: 1.5rem 1rem;
+}
+
+.topbar { display: flex; justify-content: space-between; align-items: center; }
+.topbar h1 { margin: 0; font-size: 1.1rem; }
+#menu-toggle { padding: .25rem; background: none; border: 0; border-radius: .6rem; cursor: pointer; }
+#menu-toggle img { display: block; height: 2rem; }
+
+.backdrop {
+  position: fixed; inset: 0;
+  background: rgb(0 0 0 / .45);
+  opacity: 0; pointer-events: none;
+  transition: opacity .25s;
+}
+.drawer {
+  position: fixed; top: 0; right: 0;
+  width: min(80vw, 18rem); height: 100dvh;
+  padding: 1.5rem 1rem;
+  display: flex; flex-direction: column; gap: .25rem;
+  background: var(--card);
+  border-left: 1px solid var(--border);
+  transform: translateX(100%);
+  transition: transform .25s ease;
+}
+.drawer button {
+  padding: .9rem 1rem; text-align: left; font-size: 1rem;
+  color: var(--text); background: none; border: 0; border-radius: .6rem; cursor: pointer;
+}
+.drawer button:hover { background: var(--bg); }
+
+body.menu-open .drawer { transform: none; }
+body.menu-open .backdrop { opacity: 1; pointer-events: auto; }

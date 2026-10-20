@@ -9,6 +9,14 @@
 </head>
 <body>
 <main id="app">
+  <header class="topbar">
+    <h1>Calorie Tracker</h1>
+    <button id="menu-toggle" type="button" aria-label="Open menu"
+            aria-expanded="false" aria-controls="drawer">
+      <img src="/logo.svg" alt="" />
+    </button>
+  </header>
+
   <section class="totals">
     <div><span id="total-kcal">0</span><small>kcal today</small></div>
     <div><span id="total-protein">0</span><small>g protein today</small></div>
@@ -30,10 +38,16 @@
       </div>
       <button id="add-btn" type="button">Add</button>
     </section>
-
-
   </div>
 </main>
+
+<div id="backdrop" class="backdrop"></div>
+<nav id="drawer" class="drawer" aria-label="Menu" inert>
+  <button id="export-btn" type="button">Export data</button>
+  <button id="import-btn" type="button">Import data</button>
+  <input id="import-file" type="file" accept="application/json,.json" hidden />
+</nav>
+
 <script type="module" src="/src/main.js"></script>
 </body>
 </html>
