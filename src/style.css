@@ -205,3 +205,16 @@ body {
 
 body.menu-open .drawer { transform: none; }
 body.menu-open .backdrop { opacity: 1; pointer-events: auto; }
+
+.field { display: grid; gap: .25rem; }
+.field label { color: var(--muted); font-size: .85rem; }
+.field input {
+  width: 100%;
+  padding: .7rem .9rem;
+  font-size: 1rem;              /* 16px or more stops iOS from zooming in on focus */
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: .6rem;
+}
+.field input:focus { outline: 2px solid var(--accent); outline-offset: 1px; }

@@ -23,7 +23,7 @@ async function render() {
     list.replaceChildren(...entries.map((e) => {
         const li = document.createElement("li");
         const time = new Date(e.timestamp).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
-        li.textContent = `${time}  ·  ${e.kcal} kcal  ·  ${e.protein} g`;
+        li.textContent = `${time}  ·  ${e.kcal} kcal  ·  ${e.protein} g` + (e.note ? `  ·  ${e.note}` : "");
         const del = document.createElement("button");
         del.textContent = "✕";
         del.onclick = async () => { await storage.remove(e.id); render(); };
@@ -47,10 +47,13 @@ $("protein").addEventListener("input", () => {
 $("add-btn").onclick = async () => {
     const kcal = Number($("kcal").value);
     const protein = Number($("protein").value);
+    const note = $("note").value;
+
     if (kcal === null || protein === null) return;
 
-    await storage.add(createEntry({ kcal, protein }));
+    await storage.add(createEntry({ kcal, protein, note }));
 
+    $("note").value = "";
     $("kcal").value = DEFAULT_KCAL;
     $("protein").value = DEFAULT_PROTEIN;
     $("kcal-value").textContent = DEFAULT_KCAL;
